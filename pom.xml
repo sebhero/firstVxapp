@@ -20,6 +20,17 @@
             <artifactId>vertx-web</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mongo-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>1.50.0</version>
+            <scope>test</scope>
+        </dependency>
 
         <!--Testing-->
         <dependency>
@@ -76,6 +87,31 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--Mongo DB-->
+            <plugin>
+                <groupId>com.github.joelittlejohn.embedmongo</groupId>
+                <artifactId>embedmongo-maven-plugin</artifactId>
+                <version>0.2.0</version>
+                <executions>
+                    <execution>
+                        <id>start</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <port>37017</port>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!--end of build-->
         </plugins>
     </build>
